@@ -9,6 +9,7 @@ def main():
     result = get_result(score)
     print(result)
 
+
 def get_result(score):
     if score < 0 or score > 100:
         return "Invalid score"
@@ -22,3 +23,4 @@ def get_result(score):
 
 
 main()
+
