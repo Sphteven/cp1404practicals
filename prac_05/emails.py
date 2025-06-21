@@ -9,8 +9,12 @@ def main():
     emails = []
     email = get_email()
     while email != "":
-        get_name(email)
+        full_name = email_to_name(email)
         emails.append(email)
+        if check_if_name(full_name):
+            print("yes")
+        else:
+            print("no")
         email = get_email()
 
 
@@ -19,10 +23,9 @@ def get_email():
     return email
 
 
-def get_name(email):
+def email_to_name(email):
     first_iterate = email.split("@")[0]
     second_iterate = first_iterate.split(".")
-    print(second_iterate)
     try:
         full_name = f"{second_iterate[0]} {second_iterate[1]}"
     except IndexError:
@@ -30,4 +33,10 @@ def get_name(email):
     return full_name
 
 
+def check_if_name(full_name):
+    answer = input(f"Is your name {full_name}? (Y/n) ")
+    if answer.upper() == "Y" or answer == "":
+        return True
+    else:
+        return False
 main()
