@@ -12,11 +12,12 @@ def main():
     while email != "":
         full_name = convert_email_to_name(email)
         emails.append(email)
-        if check_if_name(full_name):
-            print("yes")
-        else:
-            print("no")
+        if check_if_name(full_name) is False:
+            full_name = input("Name: ").title()
+        emails_to_name[full_name] = email
         email = get_email()
+    for name, email in emails_to_name.items():
+        print(f"{name} ({email})")
 
 
 def get_email():
@@ -31,6 +32,7 @@ def convert_email_to_name(email):
         full_name = f"{second_iterate[0]} {second_iterate[1]}"
     except IndexError:
         full_name = f"{second_iterate[0]}"
+    full_name = full_name.title()
     return full_name
 
 
@@ -40,4 +42,6 @@ def check_if_name(full_name):
         return True
     else:
         return False
+
+
 main()
