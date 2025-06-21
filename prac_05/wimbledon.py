@@ -8,14 +8,27 @@ Actual:   60 minutes
 
 def main():
     FILENAME = "wimbledon.csv"
-    records = []
-    champions = []
-    countries = []
-    create_records(FILENAME, records)
+    records = create_records(FILENAME)
     champions_to_wins = {}
-    champions = extract_record(champions, records, 2)
-    countries = extract_record(countries, records, 1)
+    champions = extract_record(records, 2)
+    countries = extract_record(records, 1)
     countries.sort()
+    count_champion_wins(champions, champions_to_wins, records)
+    print_wimbledon_champs(champions_to_wins)
+    winning_countries = ", ".join(countries)
+    print(f"These {len(countries)} countries have won Wimbledon:\n"
+          f"{winning_countries}")
+
+
+def print_wimbledon_champs(champions_to_wins):
+    """Print all champions and wins"""
+    print("Wimbledon Champions:")
+    for champion, wins in champions_to_wins.items():
+        print(champion, wins)
+
+
+def count_champion_wins(champions, champions_to_wins, records):
+    """Count number of wins for each champions"""
     for champion in champions:
         total_wins = 0
         for record in records:
@@ -24,7 +37,9 @@ def main():
         champions_to_wins[champion] = total_wins
 
 
-def create_records(FILENAME, records):
+def create_records(FILENAME):
+    """Create records from file and returns as list of list"""
+    records = []
     with open(FILENAME, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
         for line in in_file:
@@ -32,7 +47,9 @@ def create_records(FILENAME, records):
     return records
 
 
-def extract_record(list_of_items, records, i):
+def extract_record(records, i):
+    """Extract data from records and returns as list"""
+    list_of_items = []
     for record in records:
         if record[i] not in list_of_items:
             list_of_items.append(record[i])
