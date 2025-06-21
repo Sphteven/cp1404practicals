@@ -21,11 +21,13 @@ def main():
 
 
 def get_email():
+    """Get email from user"""
     email = input("Email: ")
     return email
 
 
 def convert_email_to_name(email):
+    """Split string into wanted full name strings and returns it"""
     first_iterate = email.split("@")[0]
     second_iterate = first_iterate.split(".")
     try:
@@ -37,6 +39,7 @@ def convert_email_to_name(email):
 
 
 def check_if_name(full_name):
+    """Check with user if this is the desired output"""
     answer = input(f"Is your name {full_name}? (Y/n) ")
     if answer.upper() == "Y" or answer == "":
         return True
