@@ -6,10 +6,11 @@ Actual:   55 minutes
 
 
 def main():
+    emails_to_name = {}
     emails = []
     email = get_email()
     while email != "":
-        full_name = email_to_name(email)
+        full_name = convert_email_to_name(email)
         emails.append(email)
         if check_if_name(full_name):
             print("yes")
@@ -23,7 +24,7 @@ def get_email():
     return email
 
 
-def email_to_name(email):
+def convert_email_to_name(email):
     first_iterate = email.split("@")[0]
     second_iterate = first_iterate.split(".")
     try:
