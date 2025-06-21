@@ -6,7 +6,7 @@ Actual:   55 minutes
 
 
 def main():
-    emails_to_name = {}
+    name_to_email = {}
     emails = []
     email = get_email()
     while email != "":
@@ -14,9 +14,9 @@ def main():
         emails.append(email)
         if check_if_name(full_name) is False:
             full_name = input("Name: ").title()
-        emails_to_name[full_name] = email
+        name_to_email[full_name] = email
         email = get_email()
-    for name, email in emails_to_name.items():
+    for name, email in name_to_email.items():
         print(f"{name} ({email})")
 
 
