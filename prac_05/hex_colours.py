@@ -3,8 +3,6 @@ CP1404/CP5632 Practical
 Hex codes in dictionary
 """
 
-# "QLD": "Queensland", "NSW": "New South Wales", "NT": "Northern Territory", "WA": "Western Australia",
-#                 "ACT": "Australian Capital Territory", "VIC": "Victoria", "TAS": "Tasmania", "SA": "South Australia"
 
 HEX_NAME_TO_CODE = {"absolute zero": "#0048ba", "acid green": "#b0bf1a", "aliceblue": "#f0f8ff",
                     "amber": "#9966cc", "amethyst": "#9966cc", "aqua": "#00ffff",
@@ -12,8 +10,8 @@ HEX_NAME_TO_CODE = {"absolute zero": "#0048ba", "acid green": "#b0bf1a", "aliceb
                     "banana yellow": "#ffe135"}
 print(HEX_NAME_TO_CODE)
 
-for i in HEX_NAME_TO_CODE:
-    print(f"{i:<13} is {HEX_NAME_TO_CODE[i]}")
+for key in HEX_NAME_TO_CODE:
+    print(f"{key:<13} is {HEX_NAME_TO_CODE[key]}")
 
 hex_name = input("Enter hex name: ").lower()
 while hex_name != "":

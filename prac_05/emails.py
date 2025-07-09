@@ -6,6 +6,7 @@ Actual:   60 minutes
 
 
 def main():
+    """Loop until user inputs an empty value then it will print list."""
     name_to_email = {}
     emails = []
     email = get_email()
@@ -27,7 +28,7 @@ def get_email():
 
 
 def convert_email_to_name(email):
-    """Split string into wanted full name strings and returns it"""
+    """Split string into wanted full name strings and returns it."""
     first_iterate = email.split("@")[0]
     second_iterate = first_iterate.split(".")
     try:
@@ -39,7 +40,7 @@ def convert_email_to_name(email):
 
 
 def check_if_name(full_name):
-    """Check with user if this is the desired output"""
+    """Check with user if this is the desired output."""
     answer = input(f"Is your name {full_name}? (Y/n) ")
     if answer.upper() == "Y" or answer == "":
         return True

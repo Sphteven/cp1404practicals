@@ -7,8 +7,8 @@ File needs reformatting
 CODE_TO_NAME = {"QLD": "Queensland", "NSW": "New South Wales", "NT": "Northern Territory", "WA": "Western Australia",
                 "ACT": "Australian Capital Territory", "VIC": "Victoria", "TAS": "Tasmania", "SA": "South Australia"}
 
-for i in CODE_TO_NAME:
-    print(f"{i:<3} is {CODE_TO_NAME[i]}")
+for key in CODE_TO_NAME:
+    print(f"{key:<3} is {CODE_TO_NAME[key]}")
 
 state_code = input("Enter short state: ").upper()
 while state_code != "":
