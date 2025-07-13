@@ -2,7 +2,7 @@
 Programming_languages
 
 Estimate: 30 minutes
-Actual:    minutes
+Actual: 25 minutes
 
 """
 
