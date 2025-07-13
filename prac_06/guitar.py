@@ -23,7 +23,7 @@ class Guitar:
 
     def __str__(self):
         """Return a string representation of the guitar object."""
-        return f"Guitar: {self.name} {self.year} : {self.cost}"
+        return f"{self.name} ({self.year}) : ${self.cost:.2f}"
 
     def get_age(self):
         """Calculate the age of the guitar."""
