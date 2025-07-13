@@ -16,13 +16,9 @@ print("My guitars!")
 print(f"{guitars[0]} added.")
 print(f"{guitars[1]} added.")
 print(f"{guitars[2]} added.")
-guitar_count = 1
 max_name_length = max(len(guitar.name) for guitar in guitars)
 max_cost_length = max(len(f"{guitar.cost:,.2f}") for guitar in guitars)
-for guitar in guitars:
-    if guitar.is_vintage():
-        print(
-            f"Guitar {guitar_count}: {guitar.name:>{max_name_length}}, worth $ {guitar.cost:>{max_cost_length},.2f} (vintage)")
-    else:
-        print(f"Guitar {guitar_count}: {guitar.name:>{max_name_length}}, worth $ {guitar.cost:>{max_cost_length},.2f}")
-    guitar_count += 1
+print("These are my guitars: ")
+for i, guitar in enumerate(guitars, 1):
+    vintage = "(vintage)" if guitar.is_vintage() else ""
+    print(f"Guitar {i}: {guitar.name:>{max_name_length}}, worth $ {guitar.cost:>{max_cost_length},.2f} {vintage}")
