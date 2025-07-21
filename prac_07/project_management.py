@@ -18,10 +18,39 @@ def main():
            "- (Q)uit"
     FILENAME = "projects.txt"
 
-    print("Welcome to Pythonic Project Management")
-
     projects = load_from_file(FILENAME)
+    print("Welcome to Pythonic Project Management")
+    print(f"{len(projects)} projects loaded")
+    choice = input(MENU).upper()
+    while choice != "Q":
+        if choice == "L":
+            print("yes")
+        elif choice == "S":
+            file_name = input("Enter a file name you would like to save to: ")
+            while file_name == "":
+                print("Your filename can't be empty")
+                file_name = input("Enter a file name you would like to save to: ")
+            file_name = file_name + ".txt"  # to make sure file is saved as a textfile
+            save_to_file(file_name, projects)
+        elif choice == "D":
+            print("yest")
+        elif choice == "F":
+            print("yest")
+        elif choice == "A":
+            print("yest")
+        elif choice == "U":
+            print("yest")
+        else:
+            print("Invalid input")
+        choice = input(MENU).upper()
 
+
+def save_to_file(file_name, projects):
+    with open(file_name, "w") as projects_file:
+        projects_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in projects:
+            projects_file.write(
+                f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
 
 
 def load_from_file(file_name):
