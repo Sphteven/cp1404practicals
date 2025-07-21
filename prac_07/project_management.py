@@ -44,7 +44,13 @@ def main():
         elif choice == "F":
             print("yest")
         elif choice == "A":
-            print("yest")
+            print("Let's add a new project")
+            name = input("Name: ")
+            start_date = input("Start date(dd/mm/yy): ")
+            priority = input("Priority: ")
+            cost = input("Cost estimate: ")
+            percent_complete = input("Percent complete: ")
+            projects.append(Project(name, start_date, priority, cost, percent_complete))
         elif choice == "U":
             print("yest")
         else:
