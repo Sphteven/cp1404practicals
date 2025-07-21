@@ -15,7 +15,7 @@ def main():
            "- (F)ilter projects by date\n" \
            "- (A)dd new project  \n" \
            "- (U)pdate project \n" \
-           "- (Q)uit"
+           "- (Q)uit\n"
     FILENAME = "projects.txt"
 
     projects = load_from_file(FILENAME)
@@ -33,7 +33,14 @@ def main():
             file_name = file_name + ".txt"  # to make sure file is saved as a textfile
             save_to_file(file_name, projects)
         elif choice == "D":
-            print("yest")
+            print("Incomplete projects: ")
+            for project in projects:
+                if project.is_complete() is False:
+                    print(project)
+            print("Completed projects: ")
+            for project in projects:
+                if project.is_complete() is True:
+                    print(project)
         elif choice == "F":
             print("yest")
         elif choice == "A":
