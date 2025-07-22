@@ -44,18 +44,36 @@ def main():
         elif choice == "F":
             print("yest")
         elif choice == "A":
-            print("Let's add a new project")
-            name = input("Name: ")
-            start_date = input("Start date(dd/mm/yy): ")
-            priority = input("Priority: ")
-            cost = input("Cost estimate: ")
-            percent_complete = input("Percent complete: ")
-            projects.append(Project(name, start_date, priority, cost, percent_complete))
+            projects.append(add_project())
         elif choice == "U":
-            print("yest")
+            update_project(projects)
         else:
             print("Invalid input")
         choice = input(MENU).upper()
+
+
+def update_project(projects):
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    chosen_project = int(input("Project choice: "))
+    print(projects[chosen_project])
+    new_percentage = input("New percentage: ")
+    if new_percentage != "":
+        projects[chosen_project].set_percentage(new_percentage)
+    new_priority = input("New priority: ")
+    if new_priority != "":
+        projects[chosen_project].set_priority(new_priority)
+
+
+def add_project():
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date(dd/mm/yy): ")
+    priority = input("Priority: ")
+    cost = input("Cost estimate: ")
+    percent_complete = input("Percent complete: ")
+    return Project(name, start_date, priority, cost, percent_complete)
+    # projects.append(Project(name, start_date, priority, cost, percent_complete))
 
 
 def save_to_file(file_name, projects):
@@ -63,7 +81,8 @@ def save_to_file(file_name, projects):
         projects_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
         for project in projects:
             projects_file.write(
-                f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}\n")
+                f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t"
+                f"{project.completion_percentage}\n")
 
 
 def load_from_file(file_name):
