@@ -1,11 +1,10 @@
 """
 Estimated time: 40min
-Actual time:
+Actual time: 2 hours 30 min
 
 """
 
 from project import Project
-import datetime
 
 
 def main():
@@ -25,10 +24,7 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
-            file_name = input("What file would you like to load: ")
-            temp_project = load_from_file(file_name)  # used as filler for error checking if not empty then passes to main variable
-            if temp_project is not None:
-                project = temp_project
+            print("yes")
         elif choice == "S":
             file_name = input("Enter a file name you would like to save to: ")
             while file_name == "":
@@ -48,42 +44,27 @@ def main():
         elif choice == "F":
             print("yest")
         elif choice == "A":
-            projects.append(add_project())
+            projects.append(add_new_project())
         elif choice == "U":
-            update_project(projects)
+            print("yest")
         else:
             print("Invalid input")
         choice = input(MENU).upper()
-    save_choice = input("Would you like to save to projects.txt?")
-    choice_parts = save_choice.split(" ")
-    if "yes" in choice_parts:
-        save_to_file(FILENAME, projects)
-        print(f"{len(projects)} projects saved")
-    print("Thank you for using custom-built project management software.")
-def update_project(projects):
-    for i, project in enumerate(projects):
-        print(f"{i} {project}")
-    chosen_project = int(input("Project choice: "))
-    print(projects[chosen_project])
-    new_percentage = input("New percentage: ")
-    if new_percentage != "":
-        projects[chosen_project].set_percentage(new_percentage)
-    new_priority = input("New priority: ")
-    if new_priority != "":
-        projects[chosen_project].set_priority(new_priority)
 
 
-def add_project():
+def add_new_project():
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date(dd/mm/yy): ")
     priority = input("Priority: ")
     cost = input("Cost estimate: ")
     percent_complete = input("Percent complete: ")
-    return Project(name, start_date, priority, cost, percent_complete)
+    new_project = Project(name,start_date,priority,cost,percent_complete)
+    return new_project
 
 
 def save_to_file(file_name, projects):
+    """Saves projects to a file."""
     with open(file_name, "w") as projects_file:
         projects_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
         for project in projects:
@@ -93,18 +74,16 @@ def save_to_file(file_name, projects):
 
 
 def load_from_file(file_name):
+    """Load projects from specified file."""
     projects = []
-    try:
-        with open(file_name, "r") as file:
-            file.readline()  # To step over the title in the textfile
-            for line in file:
-                line = line.strip()
-                parts = line.split("\t")
-                project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
-                projects.append(project)
-        return projects
-    except FileNotFoundError:
-        print("That file does not exist.")
+    with open(file_name, "r") as file:
+        file.readline()  # To step over the title in the textfile
+        for line in file:
+            line = line.strip()
+            parts = line.split("\t")
+            project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
+            projects.append(project)
+    return projects
 
 
 main()
