@@ -5,6 +5,7 @@ Actual time:
 """
 
 from project import Project
+import datetime
 
 
 def main():
@@ -24,7 +25,10 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
-            print("yes")
+            file_name = input("What file would you like to load: ")
+            temp_project = load_from_file(file_name)  # used as filler for error checking if not empty then passes to main variable
+            if temp_project is not None:
+                project = temp_project
         elif choice == "S":
             file_name = input("Enter a file name you would like to save to: ")
             while file_name == "":
@@ -73,7 +77,6 @@ def add_project():
     cost = input("Cost estimate: ")
     percent_complete = input("Percent complete: ")
     return Project(name, start_date, priority, cost, percent_complete)
-    # projects.append(Project(name, start_date, priority, cost, percent_complete))
 
 
 def save_to_file(file_name, projects):
@@ -87,14 +90,17 @@ def save_to_file(file_name, projects):
 
 def load_from_file(file_name):
     projects = []
-    with open(file_name, "r") as file:
-        file.readline()  # To step over the title in the textfile
-        for line in file:
-            line = line.strip()
-            parts = line.split("\t")
-            project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
-            projects.append(project)
-    return projects
+    try:
+        with open(file_name, "r") as file:
+            file.readline()  # To step over the title in the textfile
+            for line in file:
+                line = line.strip()
+                parts = line.split("\t")
+                project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
+                projects.append(project)
+        return projects
+    except FileNotFoundError:
+        print("That file does not exist.")
 
 
 main()
