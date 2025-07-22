@@ -54,8 +54,12 @@ def main():
         else:
             print("Invalid input")
         choice = input(MENU).upper()
-
-
+    save_choice = input("Would you like to save to projects.txt?")
+    choice_parts = save_choice.split(" ")
+    if "yes" in choice_parts:
+        save_to_file(FILENAME, projects)
+        print(f"{len(projects)} projects saved")
+    print("Thank you for using custom-built project management software.")
 def update_project(projects):
     for i, project in enumerate(projects):
         print(f"{i} {project}")
