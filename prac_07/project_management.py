@@ -24,6 +24,7 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
+            return
         elif choice == "S":
             file_name = input("Enter a file name you would like to save to: ")
             while file_name == "":
@@ -41,9 +42,11 @@ def main():
                 if project.is_complete() is True:
                     print(project)
         elif choice == "F":
+            return
         elif choice == "A":
             projects.append(add_new_project())
         elif choice == "U":
+            return
         else:
             print("Invalid input")
         choice = input(MENU).upper()
