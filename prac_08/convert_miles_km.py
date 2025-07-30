@@ -9,9 +9,10 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
 
+CONVERSION_RATE = 1.60934
+
 
 class ConvertMilesToKmApp(App):
-    CONVERSION_RATE = 1.60934
 
     def build(self):
         """ build the Kivy app from the kv file """
@@ -23,7 +24,7 @@ class ConvertMilesToKmApp(App):
     def handle_convert(self, value):
 
         try:
-            result = float(value) * self.CONVERSION_RATE
+            result = float(value) * CONVERSION_RATE
             self.root.ids.output_label.text = str(result)
         except ValueError:
             self.root.ids.output_label.text = str(0.0)
