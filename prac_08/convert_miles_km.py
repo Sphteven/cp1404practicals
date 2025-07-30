@@ -22,7 +22,7 @@ class ConvertMilesToKmApp(App):
         return self.root
 
     def handle_convert(self, value):
-
+        """Convert miles to kilometers from input when called and place output in label."""
         try:
             result = float(value) * CONVERSION_RATE
             self.root.ids.output_label.text = str(result)
@@ -30,6 +30,7 @@ class ConvertMilesToKmApp(App):
             self.root.ids.output_label.text = str(0.0)
 
     def handle_increment(self, number_input, increment):
+        """Increment the value by input number."""
         number_converted = int(number_input)
         result = number_converted + increment
         self.root.ids.input_label.text = str(result)
