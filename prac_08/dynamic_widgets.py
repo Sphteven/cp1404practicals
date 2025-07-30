@@ -5,7 +5,7 @@ from kivy.uix.label import Label
 
 
 class DynamicWidgets(App):
-
+    """Main Program - Kivy app to demonstrate dynamic widget creation"""
     def __init__(self, **kwargs):
         """Construct the main app."""
         super().__init__(**kwargs)

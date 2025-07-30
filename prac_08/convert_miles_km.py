@@ -13,7 +13,7 @@ CONVERSION_RATE = 1.60934
 
 
 class ConvertMilesToKmApp(App):
-
+    """Main program - Kivy app to convert Miles to Kilometers."""
     def build(self):
         """ build the Kivy app from the kv file """
         Window.size = (600, 400)
