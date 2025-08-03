@@ -21,11 +21,24 @@ def main():
                 print("Invalid taxi choice")
 
         elif user_choice == "d":
-            return
+            if current_taxi is not None:
+                try:
+                    drive_taxi(current_taxi)
+                    total_bill += current_taxi.get_fare()
+                except ValueError:
+                    print("Invalid distance")
+            else:
+                print("You need to choose a taxi before you can drive")
         else:
             print("Invalid choice")
-        print(f"Bill to date: ${total_bill}")
+        print(f"Bill to date: ${total_bill:.2f}")
         user_choice = input(MENU)
+
+
+def drive_taxi(current_taxi):
+    distance_driven = int(input("Drive how far? "))
+    current_taxi.drive(distance_driven)
+    print(f"Your {current_taxi.name} trip cost you ${current_taxi.get_fare():.2f}")
 
 
 def list_taxis(taxis):
