@@ -3,6 +3,7 @@ from taxi import Taxi
 
 
 def main():
+    """Main program that loops till user quits."""
     MENU = "q)uit, c)hoose taxi, d)rive \n"
     current_taxi = None
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2),
@@ -40,17 +41,20 @@ def main():
 
 
 def drive_taxi(current_taxi):
+    """Simulate driving car and prints string to show if details of car driven. """
     distance_driven = int(input("Drive how far? "))
     current_taxi.drive(distance_driven)
     print(f"Your {current_taxi.name} trip cost you ${current_taxi.get_fare():.2f}")
 
 
 def list_taxis(taxis):
+    """List all the taxis found in list."""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
 
 
 def get_total_bill(taxis):
+    """Calculate the total bill by checking each taxi instance in list."""
     total_bill = 0
     for taxi in taxis:
         if taxi.current_fare_distance != 0:
