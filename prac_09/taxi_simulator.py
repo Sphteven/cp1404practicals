@@ -11,14 +11,18 @@ def main():
     user_choice = input(MENU)
     while user_choice != "q":
         if user_choice == "c":
-            for i, taxi in enumerate(taxis):
-                print(f"{i} - {taxi}")
+            list_taxis(taxis)
 
         elif user_choice == "d":
             return
         else:
             print("Invalid choice")
         user_choice = input(MENU)
+
+
+def list_taxis(taxis):
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
 
 
 main()
