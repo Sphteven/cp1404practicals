@@ -21,5 +21,4 @@ class UnreliableCar(Car):
         if start_value < self.reliability:
             distance_driven = super().drive(distance)
             return distance_driven
-        else:
-            print('Car is unable to drive this time')
+
